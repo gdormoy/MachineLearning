@@ -1,0 +1,14 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/gzigzi/CLionProjects/machine_learning_lib/library.cpp
+library.h
+/home/gzigzi/CLionProjects/machine_learning_lib/library.h
+
+/home/gzigzi/CLionProjects/machine_learning_lib/library.h
+

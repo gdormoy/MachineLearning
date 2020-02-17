@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC -g  -shared -Wl,-soname,libmachine_learning_lib.so -o libmachine_learning_lib.so CMakeFiles/machine_learning_lib.dir/library.cpp.o 

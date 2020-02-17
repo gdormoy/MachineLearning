@@ -1,0 +1,3 @@
+/home/gzigzi/CLionProjects/machine_learning_lib/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/gzigzi/CLionProjects/machine_learning_lib/cmake-build-debug/CMakeFiles/machine_learning_lib.dir
+/home/gzigzi/CLionProjects/machine_learning_lib/cmake-build-debug/CMakeFiles/edit_cache.dir
