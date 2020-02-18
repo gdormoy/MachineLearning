@@ -39,9 +39,9 @@ extern "C"{
         int size = datasetSize/numberOfParams;
         MatrixXd X(size, numberOfParams + 1);
         for(int i = 0; i < size; i++){
-            X(0, i) = 1;
+            X(i, 0) = 1;
             for(int j = 1; j < numberOfParams + 1; j++){
-                X(i,j) = dataset[i * numberOfParams + j];
+                X(j,i) = dataset[i * numberOfParams + j];
             }
         }
 
