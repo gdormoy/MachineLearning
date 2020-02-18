@@ -10,7 +10,7 @@ public class RetrieveAndModifySpherePositionsScript : MonoBehaviour
     private static extern IntPtr create_linear_model(int numberOfParams);
 
     [DllImport("machine_learning_lib")]
-    private static extern IntPtr train_linear_model(IntPtr model, double[] dataset, double[] expected_output, int numberOfParams,  int datasetSize);
+    private static extern void train_linear_model(IntPtr model, double[] dataset, double[] expected_output, int numberOfParams,  int datasetSize);
 
     [DllImport("machine_learning_lib")]
     private static extern double predict_linear_model(IntPtr model, double[] param, int numberOfParams);
@@ -55,7 +55,8 @@ public class RetrieveAndModifySpherePositionsScript : MonoBehaviour
             trainingExpectedOutputs[i] = trainingSpheres[i].position.y;
         }
         
-        train_linear_model(model, trainingInputs, trainingExpectedOutputs, 2, trainingSpheres.Length);
+        train_linear_model(model, trainingInputs, trainingExpectedOutputs, 2, trainingInputs.Length);
+        Debug.Log("model is trainong");
     }
 
     public void PredictOnTestSpheres()
@@ -63,7 +64,11 @@ public class RetrieveAndModifySpherePositionsScript : MonoBehaviour
         for (var i = 0; i < testSpheres.Length; i++)
         {
             var input = new double[] {testSpheres[i].position.x, testSpheres[i].position.z};
+            Debug.Log($"x: {input[0]}");
+            Debug.Log($"z: {input[1]}");
+            Debug.Log($"input length: {input.Length}");
             var predictedY = (float) predict_linear_model(model, input, 2);
+            Debug.Log($"predict: {predictedY}");
             // var predictedY = Random.Range(-5, 5);
             testSpheres[i].position = new Vector3(
                 testSpheres[i].position.x,

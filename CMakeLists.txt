@@ -4,3 +4,4 @@ project(machine_learning_lib)
 set(CMAKE_CXX_STANDARD 14)
 
 add_library(machine_learning_lib SHARED library.cpp library.h)
+add_executable(machine_learning_exe library.cpp library.h)
