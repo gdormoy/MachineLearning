@@ -9,6 +9,11 @@ public class RetrieveAndModifySpherePositionsScript : MonoBehaviour
     [DllImport("machine_learning_lib")]
     private static extern IntPtr create_linear_model(int numberOfParams);
 
+    [DllImport("machine_learning_lib")]
+    private static extern IntPtr train_linear_model(IntPtr model, double[] dataset, double[] expected_output, int numberOfParams,  int datasetSize);
+
+    [DllImport("machine_learning_lib")]
+    private static extern double predict_linear_model(IntPtr model, double[] param, int numberOfParams);
 
     public Transform[] trainingSpheres;
 
@@ -50,7 +55,7 @@ public class RetrieveAndModifySpherePositionsScript : MonoBehaviour
             trainingExpectedOutputs[i] = trainingSpheres[i].position.y;
         }
         
-        // TrainLinearModelRosenblatt(model, trainingInputs, 2, trainingSpheres.Length, trainingExpectedOutputs, 1, 0.01, 1000)
+        train_linear_model(model, trainingInputs, trainingExpectedOutputs, 2, trainingSpheres.Length);
     }
 
     public void PredictOnTestSpheres()
@@ -58,8 +63,8 @@ public class RetrieveAndModifySpherePositionsScript : MonoBehaviour
         for (var i = 0; i < testSpheres.Length; i++)
         {
             var input = new double[] {testSpheres[i].position.x, testSpheres[i].position.z};
-            //var predictedY = PredictXXXLinearModel(model, input, 2)
-            var predictedY = Random.Range(-5, 5);
+            var predictedY = (float) predict_linear_model(model, input, 2);
+            // var predictedY = Random.Range(-5, 5);
             testSpheres[i].position = new Vector3(
                 testSpheres[i].position.x,
                 predictedY,
