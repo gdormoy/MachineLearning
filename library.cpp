@@ -49,7 +49,7 @@ extern "C"{
             }
         }
 
-        MatrixXd Y(size, numberOfParams + 1);
+        VectorXd Y(size);
         VectorXd v = (((X.transpose() * X).inverse() * X.transpose()) * Y).array();
         for(int i = 0; i < numberOfParams + 1; i++){
             model[i] = v[i];
