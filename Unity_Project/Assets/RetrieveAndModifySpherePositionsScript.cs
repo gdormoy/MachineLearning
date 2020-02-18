@@ -1,9 +1,15 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class RetrieveAndModifySpherePositionsScript : MonoBehaviour
 {
+
+    [DllImport("machine_learning_lib")]
+    private static extern IntPtr create_linear_model(int numberOfParams);
+
+
     public Transform[] trainingSpheres;
 
     public Transform[] testSpheres;
@@ -28,7 +34,8 @@ public class RetrieveAndModifySpherePositionsScript : MonoBehaviour
     
     public void CreateModel()
     {
-        //model = CreateLinearModel(2, 1);
+        model = create_linear_model(2);
+        Debug.Log(model);
     }
 
     public void Train()
