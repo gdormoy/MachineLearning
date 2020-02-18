@@ -31,7 +31,7 @@ extern "C"{
         return model;
     }
 
-    DLLEXPORT void* train_linear_class_model(double* model, double* dataset, double* expected_output){
+    DLLEXPORT void train_linear_class_model(double* model, double* dataset, double* expected_output){
 
     }
 
