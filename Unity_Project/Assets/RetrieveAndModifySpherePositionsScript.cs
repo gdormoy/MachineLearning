@@ -61,7 +61,7 @@ public class RetrieveAndModifySpherePositionsScript : MonoBehaviour
             trainingExpectedOutputs[i] = trainingSpheres[i].position.y;
         }
         
-        train_linear_class_model(model, trainingInputs, trainingExpectedOutputs, 2, trainingInputs.Length, 0.001, 1000000);
+        train_linear_class_model(model, trainingInputs, trainingExpectedOutputs, 2, trainingInputs.Length, 0.001, 5000000);
         Debug.Log("model is trainong");
     }
 
