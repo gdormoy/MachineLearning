@@ -147,6 +147,39 @@ public class RetrieveAndModifySpherePositionsScript : MonoBehaviour
         }
     }
 
+    //Possible autre solution du XOR
+    public void TrainXORDivide()
+    {
+        trainingInputs = new double[trainingSpheres.Length * 2];
+        trainingExpectedOutputs = new double[trainingSpheres.Length];
+
+        for (var i = 0; i < trainingSpheres.Length/2; i++)
+        {
+            trainingInputs[2 * i] = trainingSpheres[i].position.x / trainingSpheres[i].position.z;
+            // trainingInputs[2 * i + 1] = Math.Pow(trainingSpheres[i].position.z,2);
+            trainingExpectedOutputs[i] = trainingSpheres[i].position.y;
+        }
+        
+        train_linear_class_model(model, trainingInputs, trainingExpectedOutputs, 1, trainingInputs.Length, 0.000001, 100000);
+        Debug.Log("model is training");
+         
+    }
+
+    public void PredictOnTestSpheresXORDivide()
+    {
+        for (var i = 0; i < testSpheres.Length; i++)
+        {
+            var input = new double[] {testSpheres[i].position.x / testSpheres[i].position.z};
+            Debug.Log($"input length: {input.Length}");
+            var predictedY = (float) predict_linear_class_model(model, input, 1);
+            Debug.Log($"predict: {predictedY}");
+            testSpheres[i].position = new Vector3(
+                testSpheres[i].position.x,
+                predictedY,
+                testSpheres[i].position.z);
+        }
+    }
+
     public void TrainRegression()
     {
         trainingInputs = new double[trainingSpheres.Length * 2];
