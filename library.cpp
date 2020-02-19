@@ -68,7 +68,7 @@ extern "C"{
         for(int i = 0; i < epoch; i++){
             int exemple_number = rand() % size;
             MatrixXd exemple(numberOfParams + 1, 1);
-            double exemple_array [numberOfParams+1];
+            auto exemple_array = new double[numberOfParams+1];
 
             for(int j = 0; j < numberOfParams + 1; j++){
                 exemple(j, 0) = X(exemple_number, j);
