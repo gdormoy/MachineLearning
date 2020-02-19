@@ -10,15 +10,22 @@ public class RetrieveAndModifySpherePositionsScript : MonoBehaviour
     private static extern IntPtr create_linear_model(int numberOfParams);
 
     [DllImport("machine_learning_lib")]
-    private static extern void train_linear_model(IntPtr model, double[] dataset, double[] expected_output, int numberOfParams,  int datasetSize);
+    private static extern void train_linear_model(IntPtr model, double[] dataset, double[] expected_output,
+        int numberOfParams,  int datasetSize);
 
     [DllImport("machine_learning_lib")]
     private static extern double predict_linear_model(IntPtr model, double[] param, int numberOfParams);
 
+    [DllImport("machine_learning_lib")]
+    private static extern double predict_linear_class_model(IntPtr model, double[] param, int numberOfParams);
+
+    [DllImport("machine_learning_lib")]
+    private static extern double train_linear_class_model(IntPtr model, double[] dataset, double[] expected_output,
+        int numberOfParams,  int datasetSize, double step, int epoch);
+
     public Transform[] trainingSpheres;
 
     public Transform[] testSpheres;
-
 
     private double[] trainingInputs;
 
@@ -55,7 +62,7 @@ public class RetrieveAndModifySpherePositionsScript : MonoBehaviour
             trainingExpectedOutputs[i] = trainingSpheres[i].position.y;
         }
         
-        train_linear_model(model, trainingInputs, trainingExpectedOutputs, 2, trainingInputs.Length);
+        train_linear_class_model(model, trainingInputs, trainingExpectedOutputs, 2, trainingInputs.Length, 0.001, 1000000);
         Debug.Log("model is trainong");
     }
 
@@ -67,7 +74,7 @@ public class RetrieveAndModifySpherePositionsScript : MonoBehaviour
             Debug.Log($"x: {input[0]}");
             Debug.Log($"z: {input[1]}");
             Debug.Log($"input length: {input.Length}");
-            var predictedY = (float) predict_linear_model(model, input, 2);
+            var predictedY = (float) predict_linear_class_model(model, input, 2);
             Debug.Log($"predict: {predictedY}");
             // var predictedY = Random.Range(-5, 5);
             testSpheres[i].position = new Vector3(

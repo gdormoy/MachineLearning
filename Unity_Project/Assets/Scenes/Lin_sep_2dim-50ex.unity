@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 1793665}
   - component: {fileID: 1793664}
   m_Layer: 0
-  m_Name: TrainingSphere2 (21)
+  m_Name: TrainingSphere29
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -212,7 +212,7 @@ GameObject:
   - component: {fileID: 2917503}
   - component: {fileID: 2917502}
   m_Layer: 0
-  m_Name: TrainingSphere2 (15)
+  m_Name: TrainingSphere35
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1555,7 +1555,7 @@ GameObject:
   - component: {fileID: 101433161}
   - component: {fileID: 101433160}
   m_Layer: 0
-  m_Name: TrainingSphere2 (23)
+  m_Name: TrainingSphere27
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1950,7 +1950,7 @@ GameObject:
   - component: {fileID: 124962268}
   - component: {fileID: 124962267}
   m_Layer: 0
-  m_Name: TrainingSphere2 (6)
+  m_Name: TrainingSphere44
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2108,7 +2108,7 @@ GameObject:
   - component: {fileID: 130735130}
   - component: {fileID: 130735129}
   m_Layer: 0
-  m_Name: TrainingSphere1 (16)
+  m_Name: TrainingSphere9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2819,7 +2819,7 @@ GameObject:
   - component: {fileID: 197418442}
   - component: {fileID: 197418441}
   m_Layer: 0
-  m_Name: TrainingSphere1 (5)
+  m_Name: TrainingSphere20
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2898,7 +2898,7 @@ GameObject:
   - component: {fileID: 204068813}
   - component: {fileID: 204068812}
   m_Layer: 0
-  m_Name: TrainingSphere2 (16)
+  m_Name: TrainingSphere34
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3449,7 +3449,7 @@ GameObject:
   - component: {fileID: 249792837}
   - component: {fileID: 249792836}
   m_Layer: 0
-  m_Name: TrainingSphere 1 (25)
+  m_Name: TrainingSphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4634,7 +4634,7 @@ GameObject:
   - component: {fileID: 382113197}
   - component: {fileID: 382113196}
   m_Layer: 0
-  m_Name: TrainingSphere2 (20)
+  m_Name: TrainingSphere30
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4950,7 +4950,7 @@ GameObject:
   - component: {fileID: 421349143}
   - component: {fileID: 421349142}
   m_Layer: 0
-  m_Name: TrainingSphere1 (3)
+  m_Name: TrainingSphere22
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5187,7 +5187,7 @@ GameObject:
   - component: {fileID: 473520172}
   - component: {fileID: 473520171}
   m_Layer: 0
-  m_Name: TrainingSphere2 (9)
+  m_Name: TrainingSphere41
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5474,7 +5474,7 @@ GameObject:
   - component: {fileID: 505694510}
   - component: {fileID: 505694509}
   m_Layer: 0
-  m_Name: TrainingSphere1 (13)
+  m_Name: TrainingSphere12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5948,7 +5948,7 @@ GameObject:
   - component: {fileID: 563131919}
   - component: {fileID: 563131918}
   m_Layer: 0
-  m_Name: TrainingSphere2 (25)
+  m_Name: TrainingSphere25
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6343,7 +6343,7 @@ GameObject:
   - component: {fileID: 615353411}
   - component: {fileID: 615353410}
   m_Layer: 0
-  m_Name: TrainingSphere2 (11)
+  m_Name: TrainingSphere39
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6838,7 +6838,7 @@ GameObject:
   - component: {fileID: 653413222}
   - component: {fileID: 653413221}
   m_Layer: 0
-  m_Name: TrainingSphere1 (1)
+  m_Name: TrainingSphere24
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7470,7 +7470,7 @@ GameObject:
   - component: {fileID: 688013729}
   - component: {fileID: 688013728}
   m_Layer: 0
-  m_Name: TrainingSphere2 (17)
+  m_Name: TrainingSphere33
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8668,7 +8668,7 @@ GameObject:
   - component: {fileID: 830680494}
   - component: {fileID: 830680493}
   m_Layer: 0
-  m_Name: TrainingSphere1 (18)
+  m_Name: TrainingSphere7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8747,7 +8747,7 @@ GameObject:
   - component: {fileID: 842787424}
   - component: {fileID: 842787423}
   m_Layer: 0
-  m_Name: TrainingSphere1 (15)
+  m_Name: TrainingSphere10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9693,7 +9693,7 @@ GameObject:
   - component: {fileID: 930985148}
   - component: {fileID: 930985147}
   m_Layer: 0
-  m_Name: TrainingSphere1 (6)
+  m_Name: TrainingSphere19
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9929,6 +9929,7 @@ GameObject:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
+  - component: {fileID: 963194229}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -10001,6 +10002,278 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 28.326002, y: 0, z: 0}
+--- !u!114 &963194229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9daa9e9b7bc76744955519d803fa439, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trainingSpheres:
+  - {fileID: 249792838}
+  - {fileID: 1309992399}
+  - {fileID: 1813187163}
+  - {fileID: 1622816774}
+  - {fileID: 2099467175}
+  - {fileID: 1972011378}
+  - {fileID: 998643645}
+  - {fileID: 830680495}
+  - {fileID: 1976272432}
+  - {fileID: 130735131}
+  - {fileID: 842787425}
+  - {fileID: 1408640319}
+  - {fileID: 505694511}
+  - {fileID: 1891298285}
+  - {fileID: 2130598910}
+  - {fileID: 1073004793}
+  - {fileID: 1892021141}
+  - {fileID: 1083427046}
+  - {fileID: 1925273027}
+  - {fileID: 930985149}
+  - {fileID: 197418443}
+  - {fileID: 1371457408}
+  - {fileID: 421349144}
+  - {fileID: 1271163599}
+  - {fileID: 653413223}
+  - {fileID: 563131920}
+  - {fileID: 1765837084}
+  - {fileID: 101433162}
+  - {fileID: 2093844379}
+  - {fileID: 1793666}
+  - {fileID: 382113198}
+  - {fileID: 2084232515}
+  - {fileID: 1136388451}
+  - {fileID: 688013730}
+  - {fileID: 204068814}
+  - {fileID: 2917504}
+  - {fileID: 1916012592}
+  - {fileID: 2064789049}
+  - {fileID: 1517195400}
+  - {fileID: 615353412}
+  - {fileID: 1735230678}
+  - {fileID: 473520173}
+  - {fileID: 1032784314}
+  - {fileID: 1526534187}
+  - {fileID: 124962269}
+  - {fileID: 1825525221}
+  - {fileID: 1831243526}
+  - {fileID: 1102140184}
+  - {fileID: 2101427408}
+  - {fileID: 1300834215}
+  testSpheres:
+  - {fileID: 988659570}
+  - {fileID: 802579156}
+  - {fileID: 211007334}
+  - {fileID: 998974338}
+  - {fileID: 2024618395}
+  - {fileID: 30349739}
+  - {fileID: 1105070057}
+  - {fileID: 2016456007}
+  - {fileID: 1921970321}
+  - {fileID: 679302652}
+  - {fileID: 91670680}
+  - {fileID: 472074903}
+  - {fileID: 1874197211}
+  - {fileID: 1992042399}
+  - {fileID: 84942545}
+  - {fileID: 1151012165}
+  - {fileID: 63123265}
+  - {fileID: 1521505706}
+  - {fileID: 1522295646}
+  - {fileID: 509680564}
+  - {fileID: 1847486842}
+  - {fileID: 865781374}
+  - {fileID: 1529841811}
+  - {fileID: 1409523600}
+  - {fileID: 286104722}
+  - {fileID: 1730646862}
+  - {fileID: 736375775}
+  - {fileID: 1377897754}
+  - {fileID: 106088402}
+  - {fileID: 1744132878}
+  - {fileID: 774498675}
+  - {fileID: 873154121}
+  - {fileID: 1236732578}
+  - {fileID: 22378114}
+  - {fileID: 1409781804}
+  - {fileID: 1869235683}
+  - {fileID: 779584474}
+  - {fileID: 2119661075}
+  - {fileID: 20099202}
+  - {fileID: 558976746}
+  - {fileID: 976688637}
+  - {fileID: 54851941}
+  - {fileID: 602419268}
+  - {fileID: 1585166693}
+  - {fileID: 1104903338}
+  - {fileID: 375555221}
+  - {fileID: 683228545}
+  - {fileID: 112479489}
+  - {fileID: 2057047534}
+  - {fileID: 905675029}
+  - {fileID: 52736102}
+  - {fileID: 155391980}
+  - {fileID: 978942440}
+  - {fileID: 128823686}
+  - {fileID: 1602912295}
+  - {fileID: 1879466354}
+  - {fileID: 1023698376}
+  - {fileID: 170730289}
+  - {fileID: 663983432}
+  - {fileID: 416586457}
+  - {fileID: 367508367}
+  - {fileID: 1483895468}
+  - {fileID: 83060504}
+  - {fileID: 811949994}
+  - {fileID: 1833415325}
+  - {fileID: 564365390}
+  - {fileID: 1402946731}
+  - {fileID: 1090113449}
+  - {fileID: 537007527}
+  - {fileID: 1105404883}
+  - {fileID: 1735340560}
+  - {fileID: 1092426688}
+  - {fileID: 789579490}
+  - {fileID: 1622290211}
+  - {fileID: 1089187898}
+  - {fileID: 1809613808}
+  - {fileID: 214361204}
+  - {fileID: 1980697752}
+  - {fileID: 1365778920}
+  - {fileID: 960226241}
+  - {fileID: 310997637}
+  - {fileID: 1665318652}
+  - {fileID: 781149349}
+  - {fileID: 1657827584}
+  - {fileID: 1181120316}
+  - {fileID: 2008011728}
+  - {fileID: 1622512949}
+  - {fileID: 870536052}
+  - {fileID: 1993086932}
+  - {fileID: 1398152035}
+  - {fileID: 971104632}
+  - {fileID: 1679331482}
+  - {fileID: 3162325}
+  - {fileID: 539468433}
+  - {fileID: 1122047801}
+  - {fileID: 859686657}
+  - {fileID: 222581584}
+  - {fileID: 766187923}
+  - {fileID: 1488161855}
+  - {fileID: 677193854}
+  - {fileID: 1915685892}
+  - {fileID: 1111343454}
+  - {fileID: 1204940236}
+  - {fileID: 1364776662}
+  - {fileID: 1452212299}
+  - {fileID: 881279768}
+  - {fileID: 1465810837}
+  - {fileID: 668580805}
+  - {fileID: 1484787704}
+  - {fileID: 1332917739}
+  - {fileID: 1269256907}
+  - {fileID: 1255466350}
+  - {fileID: 37430067}
+  - {fileID: 1530348382}
+  - {fileID: 1405741788}
+  - {fileID: 1047392253}
+  - {fileID: 1100549471}
+  - {fileID: 290613289}
+  - {fileID: 137510065}
+  - {fileID: 644327428}
+  - {fileID: 2034481210}
+  - {fileID: 150239524}
+  - {fileID: 418234887}
+  - {fileID: 1133928034}
+  - {fileID: 393573893}
+  - {fileID: 2083645395}
+  - {fileID: 1458686243}
+  - {fileID: 299273128}
+  - {fileID: 1355298502}
+  - {fileID: 1831397461}
+  - {fileID: 1205016047}
+  - {fileID: 2095268914}
+  - {fileID: 864478383}
+  - {fileID: 68972622}
+  - {fileID: 1693177401}
+  - {fileID: 39572143}
+  - {fileID: 103552023}
+  - {fileID: 106810013}
+  - {fileID: 1685358083}
+  - {fileID: 312570241}
+  - {fileID: 2033696642}
+  - {fileID: 2031085735}
+  - {fileID: 1939130020}
+  - {fileID: 95471566}
+  - {fileID: 1350455585}
+  - {fileID: 810954448}
+  - {fileID: 157602310}
+  - {fileID: 2029051255}
+  - {fileID: 2022686417}
+  - {fileID: 1331425247}
+  - {fileID: 379154498}
+  - {fileID: 205251670}
+  - {fileID: 729796308}
+  - {fileID: 1361290152}
+  - {fileID: 1141786049}
+  - {fileID: 1221568262}
+  - {fileID: 2093181677}
+  - {fileID: 1665465680}
+  - {fileID: 494458688}
+  - {fileID: 2023295278}
+  - {fileID: 36878475}
+  - {fileID: 1040199409}
+  - {fileID: 276752194}
+  - {fileID: 769146076}
+  - {fileID: 195353460}
+  - {fileID: 1602394802}
+  - {fileID: 464145829}
+  - {fileID: 942199217}
+  - {fileID: 1414849133}
+  - {fileID: 1515716917}
+  - {fileID: 901415023}
+  - {fileID: 672519625}
+  - {fileID: 140525911}
+  - {fileID: 1629711224}
+  - {fileID: 295360732}
+  - {fileID: 1000472862}
+  - {fileID: 1830936663}
+  - {fileID: 775906782}
+  - {fileID: 848412049}
+  - {fileID: 1000905825}
+  - {fileID: 729694352}
+  - {fileID: 250756523}
+  - {fileID: 1454744593}
+  - {fileID: 1360505998}
+  - {fileID: 1569685296}
+  - {fileID: 308520645}
+  - {fileID: 1245744373}
+  - {fileID: 1537631311}
+  - {fileID: 1882304343}
+  - {fileID: 373914251}
+  - {fileID: 571525705}
+  - {fileID: 915833891}
+  - {fileID: 2082958469}
+  - {fileID: 509795266}
+  - {fileID: 1981317580}
+  - {fileID: 2013697375}
+  - {fileID: 2120307949}
+  - {fileID: 1345593084}
+  - {fileID: 79632810}
+  - {fileID: 362141484}
+  - {fileID: 214200676}
+  - {fileID: 663384400}
+  - {fileID: 645704381}
+  - {fileID: 583526752}
+  - {fileID: 1943566693}
+  - {fileID: 1899470462}
+  - {fileID: 1509174375}
+  - {fileID: 174731795}
 --- !u!1 &971104629
 GameObject:
   m_ObjectHideFlags: 0
@@ -10395,7 +10668,7 @@ GameObject:
   - component: {fileID: 998643644}
   - component: {fileID: 998643643}
   m_Layer: 0
-  m_Name: TrainingSphere1 (19)
+  m_Name: TrainingSphere6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10996,7 +11269,7 @@ GameObject:
   - component: {fileID: 1032784313}
   - component: {fileID: 1032784312}
   m_Layer: 0
-  m_Name: TrainingSphere2 (8)
+  m_Name: TrainingSphere42
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11310,7 +11583,7 @@ GameObject:
   - component: {fileID: 1073004792}
   - component: {fileID: 1073004791}
   m_Layer: 0
-  m_Name: TrainingSphere1 (10)
+  m_Name: TrainingSphere15
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11389,7 +11662,7 @@ GameObject:
   - component: {fileID: 1083427045}
   - component: {fileID: 1083427044}
   m_Layer: 0
-  m_Name: TrainingSphere1 (8)
+  m_Name: TrainingSphere17
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11784,7 +12057,7 @@ GameObject:
   - component: {fileID: 1102140183}
   - component: {fileID: 1102140182}
   m_Layer: 0
-  m_Name: TrainingSphere2 (3)
+  m_Name: TrainingSphere47
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12337,7 +12610,7 @@ GameObject:
   - component: {fileID: 1136388450}
   - component: {fileID: 1136388449}
   m_Layer: 0
-  m_Name: TrainingSphere2 (18)
+  m_Name: TrainingSphere32
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13462,7 +13735,7 @@ GameObject:
   - component: {fileID: 1271163598}
   - component: {fileID: 1271163597}
   m_Layer: 0
-  m_Name: TrainingSphere1 (2)
+  m_Name: TrainingSphere23
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13541,7 +13814,7 @@ GameObject:
   - component: {fileID: 1300834214}
   - component: {fileID: 1300834213}
   m_Layer: 0
-  m_Name: TrainingSphere2 (1)
+  m_Name: TrainingSphere49
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13620,7 +13893,7 @@ GameObject:
   - component: {fileID: 1309992398}
   - component: {fileID: 1309992397}
   m_Layer: 0
-  m_Name: TrainingSphere 1 (24)
+  m_Name: TrainingSphere1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14487,7 +14760,7 @@ GameObject:
   - component: {fileID: 1371457407}
   - component: {fileID: 1371457406}
   m_Layer: 0
-  m_Name: TrainingSphere1 (4)
+  m_Name: TrainingSphere21
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14882,7 +15155,7 @@ GameObject:
   - component: {fileID: 1408640318}
   - component: {fileID: 1408640317}
   m_Layer: 0
-  m_Name: TrainingSphere1 (14)
+  m_Name: TrainingSphere11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15909,7 +16182,7 @@ GameObject:
   - component: {fileID: 1517195399}
   - component: {fileID: 1517195398}
   m_Layer: 0
-  m_Name: TrainingSphere2 (12)
+  m_Name: TrainingSphere38
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16146,7 +16419,7 @@ GameObject:
   - component: {fileID: 1526534186}
   - component: {fileID: 1526534185}
   m_Layer: 0
-  m_Name: TrainingSphere2 (7)
+  m_Name: TrainingSphere43
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16936,7 +17209,7 @@ GameObject:
   - component: {fileID: 1622816773}
   - component: {fileID: 1622816772}
   m_Layer: 0
-  m_Name: TrainingSphere1 (22)
+  m_Name: TrainingSphere3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17647,7 +17920,7 @@ GameObject:
   - component: {fileID: 1735230677}
   - component: {fileID: 1735230676}
   m_Layer: 0
-  m_Name: TrainingSphere2 (10)
+  m_Name: TrainingSphere40
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17884,7 +18157,7 @@ GameObject:
   - component: {fileID: 1765837083}
   - component: {fileID: 1765837082}
   m_Layer: 0
-  m_Name: TrainingSphere2 (24)
+  m_Name: TrainingSphere26
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18042,7 +18315,7 @@ GameObject:
   - component: {fileID: 1813187162}
   - component: {fileID: 1813187161}
   m_Layer: 0
-  m_Name: TrainingSphere1 (23)
+  m_Name: TrainingSphere2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18121,7 +18394,7 @@ GameObject:
   - component: {fileID: 1825525220}
   - component: {fileID: 1825525219}
   m_Layer: 0
-  m_Name: TrainingSphere2 (5)
+  m_Name: TrainingSphere45
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18279,7 +18552,7 @@ GameObject:
   - component: {fileID: 1831243525}
   - component: {fileID: 1831243524}
   m_Layer: 0
-  m_Name: TrainingSphere2 (4)
+  m_Name: TrainingSphere46
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18911,7 +19184,7 @@ GameObject:
   - component: {fileID: 1891298284}
   - component: {fileID: 1891298283}
   m_Layer: 0
-  m_Name: TrainingSphere1 (12)
+  m_Name: TrainingSphere13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18990,7 +19263,7 @@ GameObject:
   - component: {fileID: 1892021140}
   - component: {fileID: 1892021139}
   m_Layer: 0
-  m_Name: TrainingSphere1 (9)
+  m_Name: TrainingSphere16
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19227,7 +19500,7 @@ GameObject:
   - component: {fileID: 1916012591}
   - component: {fileID: 1916012590}
   m_Layer: 0
-  m_Name: TrainingSphere2 (14)
+  m_Name: TrainingSphere36
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19385,7 +19658,7 @@ GameObject:
   - component: {fileID: 1925273026}
   - component: {fileID: 1925273025}
   m_Layer: 0
-  m_Name: TrainingSphere1 (7)
+  m_Name: TrainingSphere18
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19622,7 +19895,7 @@ GameObject:
   - component: {fileID: 1972011377}
   - component: {fileID: 1972011376}
   m_Layer: 0
-  m_Name: TrainingSphere1 (20)
+  m_Name: TrainingSphere5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19701,7 +19974,7 @@ GameObject:
   - component: {fileID: 1976272431}
   - component: {fileID: 1976272430}
   m_Layer: 0
-  m_Name: TrainingSphere1 (17)
+  m_Name: TrainingSphere8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20965,7 +21238,7 @@ GameObject:
   - component: {fileID: 2064789048}
   - component: {fileID: 2064789047}
   m_Layer: 0
-  m_Name: TrainingSphere2 (13)
+  m_Name: TrainingSphere37
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21331,7 +21604,7 @@ GameObject:
   - component: {fileID: 2084232514}
   - component: {fileID: 2084232513}
   m_Layer: 0
-  m_Name: TrainingSphere2 (19)
+  m_Name: TrainingSphere31
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21489,7 +21762,7 @@ GameObject:
   - component: {fileID: 2093844378}
   - component: {fileID: 2093844377}
   m_Layer: 0
-  m_Name: TrainingSphere2 (22)
+  m_Name: TrainingSphere28
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21647,7 +21920,7 @@ GameObject:
   - component: {fileID: 2099467174}
   - component: {fileID: 2099467173}
   m_Layer: 0
-  m_Name: TrainingSphere1 (21)
+  m_Name: TrainingSphere4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21726,7 +21999,7 @@ GameObject:
   - component: {fileID: 2101427407}
   - component: {fileID: 2101427406}
   m_Layer: 0
-  m_Name: TrainingSphere2 (2)
+  m_Name: TrainingSphere48
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22066,7 +22339,7 @@ GameObject:
   - component: {fileID: 2130598909}
   - component: {fileID: 2130598908}
   m_Layer: 0
-  m_Name: TrainingSphere1 (11)
+  m_Name: TrainingSphere14
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
