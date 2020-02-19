@@ -33,7 +33,7 @@ extern "C"{
     }
 
     DLLEXPORT double predict_linear_class_model(const double* model, const double* params, const int numberOfParams) {
-        return signbit(predict_linear_model(model, params, numberOfParams));
+        return predict_linear_model(model, params, numberOfParams) > 0 ? 1 : -1;
     }
 
     DLLEXPORT double* create_linear_model(const int numberOfParams) {
