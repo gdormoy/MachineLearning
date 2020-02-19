@@ -12593,8 +12593,55 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trainingSpheres:
   - {fileID: 249792838}
+  - {fileID: 1309992399}
+  - {fileID: 1813187163}
+  - {fileID: 1622816774}
+  - {fileID: 2099467175}
+  - {fileID: 1972011378}
+  - {fileID: 998643645}
+  - {fileID: 830680495}
   - {fileID: 1976272432}
-  - {fileID: 0}
+  - {fileID: 130735131}
+  - {fileID: 842787425}
+  - {fileID: 1408640319}
+  - {fileID: 505694511}
+  - {fileID: 1891298285}
+  - {fileID: 2130598910}
+  - {fileID: 1073004793}
+  - {fileID: 1892021141}
+  - {fileID: 1083427046}
+  - {fileID: 1925273027}
+  - {fileID: 930985149}
+  - {fileID: 197418443}
+  - {fileID: 1371457408}
+  - {fileID: 421349144}
+  - {fileID: 1271163599}
+  - {fileID: 653413223}
+  - {fileID: 563131920}
+  - {fileID: 1765837084}
+  - {fileID: 101433162}
+  - {fileID: 2093844379}
+  - {fileID: 1793666}
+  - {fileID: 382113198}
+  - {fileID: 2084232515}
+  - {fileID: 1136388451}
+  - {fileID: 688013730}
+  - {fileID: 204068814}
+  - {fileID: 2917504}
+  - {fileID: 1916012592}
+  - {fileID: 2064789049}
+  - {fileID: 1517195400}
+  - {fileID: 615353412}
+  - {fileID: 1735230678}
+  - {fileID: 473520173}
+  - {fileID: 1032784314}
+  - {fileID: 1526534187}
+  - {fileID: 124962269}
+  - {fileID: 1825525221}
+  - {fileID: 1831243526}
+  - {fileID: 1102140184}
+  - {fileID: 2101427408}
+  - {fileID: 1300834215}
   testSpheres:
   - {fileID: 988659570}
   - {fileID: 802579156}
