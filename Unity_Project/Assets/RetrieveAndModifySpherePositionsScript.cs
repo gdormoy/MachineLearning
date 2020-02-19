@@ -61,46 +61,8 @@ public class RetrieveAndModifySpherePositionsScript : MonoBehaviour
             trainingExpectedOutputs[i] = trainingSpheres[i].position.y;
         }
         
-        train_linear_class_model(model, trainingInputs, trainingExpectedOutputs, 2, trainingInputs.Length, 0.0001, 100000);
+        train_linear_class_model(model, trainingInputs, trainingExpectedOutputs, 2, trainingInputs.Length, 0.00001, 100000);
         Debug.Log("model is training");
-    }
-    public void TrainXOR()
-    {
-        trainingInputs = new double[trainingSpheres.Length * 2];
-        trainingExpectedOutputs = new double[trainingSpheres.Length];
-
-        for (var i = 0; i < trainingSpheres.Length; i++)
-        {
-            trainingInputs[2 * i] = Math.Sign(trainingSpheres[i].position.x);
-            trainingInputs[2 * i + 1] = Math.Sign(trainingSpheres[i].position.z);
-            trainingExpectedOutputs[i] = trainingSpheres[i].position.y;
-        }
-        
-        train_linear_class_model(model, trainingInputs, trainingExpectedOutputs, 2, trainingInputs.Length, 0.0001, 100000);
-        Debug.Log("model is training");
-        for (var i = 0; i < trainingSpheres.Length; i++){
-            trainingSpheres[i].position = new Vector3(
-                (float) Math.Pow(trainingSpheres[i].position.x,2),
-                (float) Math.Pow(trainingSpheres[i].position.y,2),
-                (float) Math.Pow(trainingSpheres[i].position.z,2)
-            );
-        }
-         
-    }
-
-    public void PredictOnTestSpheresXOR()
-    {
-        for (var i = 0; i < testSpheres.Length; i++)
-        {
-            var input = new double[] {Math.Sign(testSpheres[i].position.x), Math.Sign(testSpheres[i].position.z)};
-            Debug.Log($"input length: {input.Length}");
-            var predictedY = (float) predict_linear_class_model(model, input, 2);
-            Debug.Log($"predict: {predictedY}");
-            testSpheres[i].position = new Vector3(
-                testSpheres[i].position.x,
-                predictedY,
-                testSpheres[i].position.z);
-        }
     }
 
     public void PredictOnTestSpheres()
@@ -112,6 +74,71 @@ public class RetrieveAndModifySpherePositionsScript : MonoBehaviour
             Debug.Log($"z: {input[1]}");
             Debug.Log($"input length: {input.Length}");
             var predictedY = (float) predict_linear_class_model(model, input, 2);
+            Debug.Log($"predict: {predictedY}");
+            testSpheres[i].position = new Vector3(
+                testSpheres[i].position.x,
+                predictedY,
+                testSpheres[i].position.z);
+        }
+    }
+
+    public void TrainKOSoft()
+    {
+        trainingInputs = new double[trainingSpheres.Length * 2];
+        trainingExpectedOutputs = new double[trainingSpheres.Length];
+
+        for (var i = 0; i < trainingSpheres.Length; i++)
+        {
+            trainingInputs[2 * i] = trainingSpheres[i].position.x;
+            trainingInputs[2 * i + 1] = trainingSpheres[i].position.z;
+            trainingExpectedOutputs[i] = trainingSpheres[i].position.y;
+        }
+        
+        train_linear_class_model(model, trainingInputs, trainingExpectedOutputs, 2, trainingInputs.Length, 0.00001, 100000);
+        Debug.Log("model is training");
+    }
+
+    public void PredictOnTestSpheresKOSoft()
+    {
+        for (var i = 0; i < testSpheres.Length; i++)
+        {
+            var input = new double[] {testSpheres[i].position.x, testSpheres[i].position.z};
+            Debug.Log($"x: {input[0]}");
+            Debug.Log($"z: {input[1]}");
+            Debug.Log($"input length: {input.Length}");
+            var predictedY = (float) predict_linear_class_model(model, input, 2);
+            Debug.Log($"predict: {predictedY}");
+            testSpheres[i].position = new Vector3(
+                testSpheres[i].position.x,
+                predictedY,
+                testSpheres[i].position.z);
+        }
+    }
+
+    public void TrainXOR()
+    {
+        trainingInputs = new double[trainingSpheres.Length * 2];
+        trainingExpectedOutputs = new double[trainingSpheres.Length];
+
+        for (var i = 0; i < trainingSpheres.Length/2; i++)
+        {
+            trainingInputs[2 * i] = trainingSpheres[i].position.x * trainingSpheres[i].position.z;
+            // trainingInputs[2 * i + 1] = Math.Pow(trainingSpheres[i].position.z,2);
+            trainingExpectedOutputs[i] = trainingSpheres[i].position.y;
+        }
+        
+        train_linear_class_model(model, trainingInputs, trainingExpectedOutputs, 1, trainingInputs.Length, 0.000001, 100000);
+        Debug.Log("model is training");
+         
+    }
+
+    public void PredictOnTestSpheresXOR()
+    {
+        for (var i = 0; i < testSpheres.Length; i++)
+        {
+            var input = new double[] {testSpheres[i].position.x * testSpheres[i].position.z};
+            Debug.Log($"input length: {input.Length}");
+            var predictedY = (float) predict_linear_class_model(model, input, 1);
             Debug.Log($"predict: {predictedY}");
             testSpheres[i].position = new Vector3(
                 testSpheres[i].position.x,
@@ -156,11 +183,5 @@ public class RetrieveAndModifySpherePositionsScript : MonoBehaviour
     public void ReleaseModel()
     {
         // FreeLinearModel(model);
-    }
-
-    public int XORFunc(double x, double y){
-        int res = (byte) x ^ (byte) y;
-        Debug.Log($"xor = {res}");
-        return res;
     }
 }
