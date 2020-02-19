@@ -149,16 +149,17 @@ extern "C"{
             result_layers[0][i] = inputs[i];
         }
 
-        for(int i = 1; i < mlp->layersSize - 1; i++){
+        for(int i = 1; i < mlp->layersSize - 2; i++){
             for(int j = 0; j < mlp->layers[i + 1]; j++){
                 for(int k = 0; k < mlp->layers[i + 2]; k++){
-                    result_layers[i][j]; // += mlp->model[i - 1][k][j] * result_layers[i - 1][j];
+                    result_layers[i][j] += mlp->model[i - 1][k][j] * result_layers[i - 1][j];
                 }
             }
         }
-        /*for(int i = 0; i < mlp->layers[mlp->layersSize - 1]; i++){
-            result += result_layers[mlp->layersSize - 1][i];
-        }*/
+        for(int i = 0; i < mlp->layers[mlp->layersSize - 2]; i++){
+            cout << i << mlp->layers[mlp->layersSize - 2] << endl;
+            result += result_layers[mlp->layersSize - 2][i];
+        }
         return result > 0 ? 1 : -1;
 
     }
