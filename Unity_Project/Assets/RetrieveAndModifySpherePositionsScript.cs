@@ -180,6 +180,39 @@ public class RetrieveAndModifySpherePositionsScript : MonoBehaviour
         }
     }
 
+    public void TrainCross()
+    {
+        trainingInputs = new double[trainingSpheres.Length * 2];
+        trainingExpectedOutputs = new double[trainingSpheres.Length];
+
+        for (var i = 0; i < trainingSpheres.Length; i++)
+        {
+            trainingInputs[2 * i] = 1 / (Math.Pow(trainingSpheres[i].position.x,2) * Math.Pow(trainingSpheres[i].position.z,2));
+            trainingInputs[2 * i + 1] = 1 / (Math.Pow(trainingSpheres[i].position.z,2) * Math.Pow(trainingSpheres[i].position.x,2));
+            trainingExpectedOutputs[i] = trainingSpheres[i].position.y;
+        }
+        
+        train_linear_class_model(model, trainingInputs, trainingExpectedOutputs, 2, trainingInputs.Length, 0.000001, 100000);
+        Debug.Log("model is training");
+         
+    }
+
+    public void PredictOnTestSpheresCross()
+    {
+        for (var i = 0; i < testSpheres.Length; i++)
+        {
+            var input = new double[] {1 / (Math.Pow(testSpheres[i].position.x,2) * Math.Pow(testSpheres[i].position.z,2)),
+                                      1 / (Math.Pow(testSpheres[i].position.z,2) * Math.Pow(testSpheres[i].position.x,2))};
+            Debug.Log($"input length: {input.Length}");
+            var predictedY = (float) predict_linear_class_model(model, input, 2);
+            Debug.Log($"predict: {predictedY}");
+            testSpheres[i].position = new Vector3(
+                testSpheres[i].position.x,
+                predictedY,
+                testSpheres[i].position.z);
+        }
+    }
+
     public void TrainRegression()
     {
         trainingInputs = new double[trainingSpheres.Length * 2];
