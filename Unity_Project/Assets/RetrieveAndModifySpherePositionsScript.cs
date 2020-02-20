@@ -124,7 +124,7 @@ public class RetrieveAndModifySpherePositionsScript : MonoBehaviour
 
         for (var i = 0; i < trainingSpheres.Length/2; i++)
         {
-            trainingInputs[2 * i] = trainingSpheres[i].position.x * trainingSpheres[i].position.z;
+            trainingInputs[2 * i] = (trainingSpheres[i].position.x * trainingSpheres[i].position.z) * -1;
             // trainingInputs[2 * i + 1] = Math.Pow(trainingSpheres[i].position.z,2);
             trainingExpectedOutputs[i] = trainingSpheres[i].position.y;
         }
@@ -138,41 +138,7 @@ public class RetrieveAndModifySpherePositionsScript : MonoBehaviour
     {
         for (var i = 0; i < testSpheres.Length; i++)
         {
-            var input = new double[] {testSpheres[i].position.x * testSpheres[i].position.z};
-            Debug.Log($"input length: {input.Length}");
-            var predictedY = (float) predict_linear_class_model(model, input, 1);
-            Debug.Log($"predict: {predictedY}");
-            testSpheres[i].position = new Vector3(
-                testSpheres[i].position.x,
-                predictedY,
-                testSpheres[i].position.z);
-        }
-    }
-
-    //Possible autre solution du XOR
-    public void TrainXORDivide()
-    {
-        trainingInputs = new double[trainingSpheres.Length * 2];
-        trainingExpectedOutputs = new double[trainingSpheres.Length];
-
-        for (var i = 0; i < trainingSpheres.Length/2; i++)
-        {
-            trainingInputs[2 * i] = trainingSpheres[i].position.x / trainingSpheres[i].position.z;
-            // trainingInputs[2 * i + 1] = Math.Pow(trainingSpheres[i].position.z,2);
-            
-            trainingExpectedOutputs[i] = trainingSpheres[i].position.y;
-        }
-        
-        train_linear_class_model(model, trainingInputs, trainingExpectedOutputs, 1, trainingInputs.Length, 0.000001, epoch);
-        Debug.Log("model is training");
-         
-    }
-
-    public void PredictOnTestSpheresXORDivide()
-    {
-        for (var i = 0; i < testSpheres.Length; i++)
-        {
-            var input = new double[] {testSpheres[i].position.x / testSpheres[i].position.z};
+            var input = new double[] {(testSpheres[i].position.x * testSpheres[i].position.z) * -1};
             Debug.Log($"input length: {input.Length}");
             var predictedY = (float) predict_linear_class_model(model, input, 1);
             Debug.Log($"predict: {predictedY}");
@@ -228,6 +194,9 @@ public class RetrieveAndModifySpherePositionsScript : MonoBehaviour
             if(x < 6 && x > 2 && z > 2 && z < 8) {
                 trainingInputs[2 * i] = x;
                 trainingInputs[2 * i + 1] = z;
+            } else {
+                trainingInputs[2 * i] = trainingSpheres[i].position.x;
+                trainingInputs[2 * i + 1] = trainingSpheres[i].position.z;
             }
             // trainingInputs[2 * i] = 1 / (Math.Pow(trainingSpheres[i].position.x,2) * Math.Pow(trainingSpheres[i].position.z,2));
             // trainingInputs[2 * i + 1] = 1 / (Math.Pow(trainingSpheres[i].position.z,2) * Math.Pow(trainingSpheres[i].position.x,2));
@@ -244,8 +213,8 @@ public class RetrieveAndModifySpherePositionsScript : MonoBehaviour
         for (var i = 0; i < testSpheres.Length; i++)
         {
             
-            double x = Math.Abs(trainingSpheres[i].position.x);
-            double z = Math.Abs(trainingSpheres[i].position.z);
+            double x = Math.Abs(testSpheres[i].position.x);
+            double z = Math.Abs(testSpheres[i].position.z);
             // var input = new double[] {x, z};
             if(x < 6 && x > 2 && z > 2 && z < 8) {
                 var input = new double[] {x, z};
@@ -253,32 +222,11 @@ public class RetrieveAndModifySpherePositionsScript : MonoBehaviour
                 var predictedY = (float) predict_linear_class_model(model, input, 2);
                 Debug.Log($"predict: {predictedY}");
                 testSpheres[i].position = new Vector3(
-                    testSpheres[i].position.x,
+                    (float) x,
                     predictedY,
-                    testSpheres[i].position.z);
-            }
-            else if(x < 6 && x > 2 && z < -2 && z > -8) {
-                var input = new double[] {x, z};
-                Debug.Log($"input length: {input.Length}");
-                var predictedY = (float) predict_linear_class_model(model, input, 2);
-                Debug.Log($"predict: {predictedY}");
-                testSpheres[i].position = new Vector3(
-                    testSpheres[i].position.x,
-                    predictedY,
-                    testSpheres[i].position.z);
-            }
-            else if(x < -2 && x > -6 && z > 2 && z < 8) {
-                var input = new double[] {x, z};
-                Debug.Log($"input length: {input.Length}");
-                var predictedY = (float) predict_linear_class_model(model, input, 2);
-                Debug.Log($"predict: {predictedY}");
-                testSpheres[i].position = new Vector3(
-                    testSpheres[i].position.x,
-                    predictedY,
-                    testSpheres[i].position.z);
-            }
-            else if(x < -2 && x > -6 && z < -2 && z > -8) {
-                var input = new double[] {x, z};
+                    (float) z);
+            } else {
+                var input = new double[] {testSpheres[i].position.x, testSpheres[i].position.z};
                 Debug.Log($"input length: {input.Length}");
                 var predictedY = (float) predict_linear_class_model(model, input, 2);
                 Debug.Log($"predict: {predictedY}");
