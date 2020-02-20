@@ -17,7 +17,7 @@ using Eigen::VectorXd;
 
 double fRand(double fMin, double fMax)
 {
-    double f = (double)rand() / RAND_MAX;
+    double f = (double)rand() / (double) RAND_MAX;
     return fMin + f * (fMax - fMin);
 }
 
@@ -43,7 +43,7 @@ extern "C"{
     }
 
     DLLEXPORT double* create_linear_model(const int numberOfParams) {
-        srand(time(nullptr));
+        //srand(time(nullptr));
         auto model = (double*) malloc(sizeof(double) * (numberOfParams + 1));
         for(int i = 0; i < numberOfParams + 1; i++){
             model[i] = fRand(-1.0, 1.0);
@@ -52,13 +52,36 @@ extern "C"{
     }
 
     DLLEXPORT void train_linear_class_model(double* model, double* dataset, double* expected_output, const int numberOfParams, const int datasetSize, double step, int epoch){
-        int size = datasetSize / numberOfParams;
+
+    int size = datasetSize / numberOfParams;
+    for(int i = 0; i < epoch; i++) {
+        int k = rand() % size;
+
+        auto inputK = dataset + k * numberOfParams;
+
+        auto predictedK = predict_linear_class_model(model, inputK, numberOfParams);
+
+        auto semiGrad = step * (expected_output[k] - predictedK);
+
+        model[0] += semiGrad;
+
+        for (auto j = 0; j < numberOfParams; j++)
+        {
+            model[j + 1] += semiGrad * inputK[j];
+        }
+
+    }
+
+    return;
+
         MatrixXd X(size, numberOfParams + 1);
         for(int i = 0; i < size; i++){
             X(i, 0) = 1;
             for(int j = 1; j < numberOfParams + 1; j++){
                 X(i,j) = dataset[i * numberOfParams + j - 1];
+                cout << "X : " << X(i,j - 1) ;
             }
+            cout << "X : " << X(i, numberOfParams) << endl;
         }
 
         MatrixXd Y(size, 1);
@@ -73,18 +96,22 @@ extern "C"{
 
         for(int i = 0; i < epoch; i++){
             int exemple_number = rand() % size;
+            cout << "exemple number : " << exemple_number << endl;
             MatrixXd exemple(numberOfParams + 1, 1);
-            auto exemple_array = new double[numberOfParams+1];
+            auto exemple_array = new double[numberOfParams];
 
+            for(int j = 0; j < numberOfParams; j++){
+                exemple_array[j] = X(exemple_number, j + 1);
+            }
             for(int j = 0; j < numberOfParams + 1; j++){
                 exemple(j, 0) = X(exemple_number, j);
-                exemple_array[j] = X(exemple_number, j);
             }
-            w = w + step * (Y(exemple_number, 0) - predict_linear_class_model(model, exemple_array, 2)) * exemple;
+            w = w + (step * (Y(exemple_number, 0) - predict_linear_class_model(model, exemple_array, 2)) * exemple);
         }
 
         for(int i = 0; i < numberOfParams + 1; i++){
             model[i] = w(i, 0);
+            cout << w(i, 0) << endl;
         }
     }
 
@@ -149,16 +176,17 @@ extern "C"{
             result_layers[0][i] = inputs[i];
         }
 
-        for(int i = 1; i < mlp->layersSize - 2; i++){
+        for(int i = 1; i < mlp->layersSize; i++){
             for(int j = 0; j < mlp->layers[i + 1]; j++){
                 for(int k = 0; k < mlp->layers[i + 2]; k++){
                     result_layers[i][j] += mlp->model[i - 1][k][j] * result_layers[i - 1][j];
+                    cout << i << j << k << endl;
                 }
             }
         }
         for(int i = 0; i < mlp->layers[mlp->layersSize - 2]; i++){
-            cout << i << mlp->layers[mlp->layersSize - 2] << endl;
-            result += result_layers[mlp->layersSize - 2][i];
+            // cout << i << mlp->layers[mlp->layersSize - 2] << endl;
+            result += tanh(result_layers[mlp->layersSize - 2][i] * mlp->model[mlp->layersSize - 2][i][0]);
         }
         return result > 0 ? 1 : -1;
 
@@ -170,9 +198,9 @@ int main()
     auto dataset = new double[6] {-10.0, 0.0, 1.0, 0.0, 5.0, 1.0};
     auto expectedOutputs = new double[3] {1.0, 0.0, 1.0};
 
-    /*cout << "bonjour";
-    auto m = create_linear_model(2);
-    train_linear_class_model(m, dataset, expectedOutputs, 2, 6, 0.0001 , 10000000);
+    cout << "bonjour";
+    /*auto m = create_linear_model(2);
+    train_linear_class_model(m, dataset, expectedOutputs, 2, 6, 0.0001 , 100000);
 
     cout << "bonjour";
     cout << predict_linear_class_model(m, dataset, 2) << endl;
@@ -183,7 +211,7 @@ int main()
         cout << m[i] << endl;
     }*/
 
-    MLP* mlp = create_mlp_model(new int[4] {2, 3, 2, 1}, 4);
+    MLP* mlp = create_mlp_model(new int[5] {2, 3, 2, 2, 1}, 5);
     cout << mlp->model[1][1][0] << endl;
     cout << predict_mlp_class_model(mlp, new double[2] {2, 3}) << endl;
     std::cout << "feoizjfozeijfoizej" << endl;
