@@ -32,6 +32,8 @@ public class RetrieveAndModifySpherePositionsScript : MonoBehaviour
 
     private IntPtr model;
 
+    public int epoch = 1000;
+
     public void ReInitialize()
     {
         for (var i = 0; i < testSpheres.Length; i++)
@@ -61,7 +63,7 @@ public class RetrieveAndModifySpherePositionsScript : MonoBehaviour
             trainingExpectedOutputs[i] = trainingSpheres[i].position.y;
         }
         
-        train_linear_class_model(model, trainingInputs, trainingExpectedOutputs, 2, trainingInputs.Length, 0.00001, 100000);
+        train_linear_class_model(model, trainingInputs, trainingExpectedOutputs, 2, trainingInputs.Length, 0.00001, epoch);
         Debug.Log("model is training");
     }
 
@@ -94,7 +96,7 @@ public class RetrieveAndModifySpherePositionsScript : MonoBehaviour
             trainingExpectedOutputs[i] = trainingSpheres[i].position.y;
         }
         
-        train_linear_class_model(model, trainingInputs, trainingExpectedOutputs, 2, trainingInputs.Length, 0.00001, 100000);
+        train_linear_class_model(model, trainingInputs, trainingExpectedOutputs, 2, trainingInputs.Length, 0.00001, epoch);
         Debug.Log("model is training");
     }
 
@@ -127,7 +129,7 @@ public class RetrieveAndModifySpherePositionsScript : MonoBehaviour
             trainingExpectedOutputs[i] = trainingSpheres[i].position.y;
         }
         
-        train_linear_class_model(model, trainingInputs, trainingExpectedOutputs, 1, trainingInputs.Length, 0.000001, 100000);
+        train_linear_class_model(model, trainingInputs, trainingExpectedOutputs, 1, trainingInputs.Length, 0.000001, epoch);
         Debug.Log("model is training");
          
     }
@@ -157,10 +159,11 @@ public class RetrieveAndModifySpherePositionsScript : MonoBehaviour
         {
             trainingInputs[2 * i] = trainingSpheres[i].position.x / trainingSpheres[i].position.z;
             // trainingInputs[2 * i + 1] = Math.Pow(trainingSpheres[i].position.z,2);
+            
             trainingExpectedOutputs[i] = trainingSpheres[i].position.y;
         }
         
-        train_linear_class_model(model, trainingInputs, trainingExpectedOutputs, 1, trainingInputs.Length, 0.000001, 100000);
+        train_linear_class_model(model, trainingInputs, trainingExpectedOutputs, 1, trainingInputs.Length, 0.000001, epoch);
         Debug.Log("model is training");
          
     }
@@ -192,7 +195,7 @@ public class RetrieveAndModifySpherePositionsScript : MonoBehaviour
             trainingExpectedOutputs[i] = trainingSpheres[i].position.y;
         }
         
-        train_linear_class_model(model, trainingInputs, trainingExpectedOutputs, 2, trainingInputs.Length, 0.000001, 100000);
+        train_linear_class_model(model, trainingInputs, trainingExpectedOutputs, 2, trainingInputs.Length, 0.00001, epoch);
         Debug.Log("model is training");
          
     }
@@ -210,6 +213,81 @@ public class RetrieveAndModifySpherePositionsScript : MonoBehaviour
                 testSpheres[i].position.x,
                 predictedY,
                 testSpheres[i].position.z);
+        }
+    }
+
+        public void TrainCrossIF()
+    {
+        trainingInputs = new double[trainingSpheres.Length * 2];
+        trainingExpectedOutputs = new double[trainingSpheres.Length];
+
+        for (var i = 0; i < trainingSpheres.Length; i++)
+        {
+            double x = Math.Abs(trainingSpheres[i].position.x);
+            double z = Math.Abs(trainingSpheres[i].position.z);
+            if(x < 6 && x > 2 && z > 2 && z < 8) {
+                trainingInputs[2 * i] = x;
+                trainingInputs[2 * i + 1] = z;
+            }
+            // trainingInputs[2 * i] = 1 / (Math.Pow(trainingSpheres[i].position.x,2) * Math.Pow(trainingSpheres[i].position.z,2));
+            // trainingInputs[2 * i + 1] = 1 / (Math.Pow(trainingSpheres[i].position.z,2) * Math.Pow(trainingSpheres[i].position.x,2));
+            trainingExpectedOutputs[i] = trainingSpheres[i].position.y;
+        }
+        
+        train_linear_class_model(model, trainingInputs, trainingExpectedOutputs, 2, trainingInputs.Length, 0.0001, epoch);
+        Debug.Log("model is training");
+         
+    }
+
+    public void PredictOnTestSpheresCrossIF()
+    {
+        for (var i = 0; i < testSpheres.Length; i++)
+        {
+            
+            double x = Math.Abs(trainingSpheres[i].position.x);
+            double z = Math.Abs(trainingSpheres[i].position.z);
+            // var input = new double[] {x, z};
+            if(x < 6 && x > 2 && z > 2 && z < 8) {
+                var input = new double[] {x, z};
+                Debug.Log($"input length: {input.Length}");
+                var predictedY = (float) predict_linear_class_model(model, input, 2);
+                Debug.Log($"predict: {predictedY}");
+                testSpheres[i].position = new Vector3(
+                    testSpheres[i].position.x,
+                    predictedY,
+                    testSpheres[i].position.z);
+            }
+            else if(x < 6 && x > 2 && z < -2 && z > -8) {
+                var input = new double[] {x, z};
+                Debug.Log($"input length: {input.Length}");
+                var predictedY = (float) predict_linear_class_model(model, input, 2);
+                Debug.Log($"predict: {predictedY}");
+                testSpheres[i].position = new Vector3(
+                    testSpheres[i].position.x,
+                    predictedY,
+                    testSpheres[i].position.z);
+            }
+            else if(x < -2 && x > -6 && z > 2 && z < 8) {
+                var input = new double[] {x, z};
+                Debug.Log($"input length: {input.Length}");
+                var predictedY = (float) predict_linear_class_model(model, input, 2);
+                Debug.Log($"predict: {predictedY}");
+                testSpheres[i].position = new Vector3(
+                    testSpheres[i].position.x,
+                    predictedY,
+                    testSpheres[i].position.z);
+            }
+            else if(x < -2 && x > -6 && z < -2 && z > -8) {
+                var input = new double[] {x, z};
+                Debug.Log($"input length: {input.Length}");
+                var predictedY = (float) predict_linear_class_model(model, input, 2);
+                Debug.Log($"predict: {predictedY}");
+                testSpheres[i].position = new Vector3(
+                    testSpheres[i].position.x,
+                    predictedY,
+                    testSpheres[i].position.z);
+            }
+            
         }
     }
 
