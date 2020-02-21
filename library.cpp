@@ -23,6 +23,8 @@ double fRand(double fMin, double fMax)
 
 typedef struct MLP{
     double*** model; // [{{1, 2, 3}, {2, 1, 3}}, {{1, 3}, {2, 1}, {1 ,2}}, {{3}, {3}}] layersSize - 1
+    double** delta;
+    double** result;
     int* layers; // [2, 3, 2, 1]
     int layersSize; // 4
 }MLP;
@@ -93,18 +95,27 @@ extern "C"{
         srand(time(nullptr));
 
         auto mlp = (MLP*) malloc(sizeof(MLP));
-        mlp->layers = (int*) malloc(sizeof(int) * (layersSize - 1));
+        mlp->layers = new int[layersSize];
         mlp->layersSize = layersSize;
+        mlp->delta = (double**) malloc(sizeof(double*)*layersSize);
+        mlp->result = (double**) malloc(sizeof(double*)*layersSize);
+
         for(int i = 0; i < layersSize; i++){
             mlp->layers[i] = layers[i];
+            mlp->result[i] = new double[layers[i]];
+            mlp->delta[i] = new double[layers[i]];
+            for(int j = 0; j < layers[i]; j++){
+                mlp->delta[i][j] = 0;
+                mlp->result[i][j] = 0;
+            }
         }
-        cout << "bonjour a tous" << endl;
+
         mlp->model = (double***) malloc(sizeof(double**) * (layersSize - 1));
         for(int i = 0; i < layersSize - 1; i++){
             mlp->model[i] = (double**) malloc(sizeof(double*) * layers[i]);
             for(int j = 0; j < layers[i]; j++){
-                mlp->model[i][j] = (double*) malloc(sizeof(double) * ((layers[i] + 1) * layers[i + 1]));
-                for(int k = 0; k < (layers[i] * layers[i + 1]) ; k++){
+                mlp->model[i][j] = (double*) malloc(sizeof(double) * (layers[i + 1]));
+                for(int k = 0; k < layers[i + 1] ; k++){
                     mlp->model[i][j][k] = fRand(-1, 1);
                 }
             }
@@ -112,36 +123,48 @@ extern "C"{
         return mlp;
     }
 
-
-    DLLEXPORT int predict_mlp_class_model(MLP* mlp, const double* inputs){
-        auto result_layers = new double*[mlp->layersSize - 1];
-        double result = 0;
-
+    DLLEXPORT int predict_mlp_class_model(MLP* mlp, double* inputs){
         for(int i = 0; i < mlp->layersSize - 1; i++){
-            result_layers[i] = new double[mlp->layers[i]];
             for(int j = 0; j < mlp->layers[i]; j++){
-                result_layers[i][j] = 0;
+                mlp->result[i][j] = 0;
             }
         }
 
         for(int i = 0; i < mlp->layers[0]; i++){
-            result_layers[0][i] = inputs[i];
+            mlp->result[0][i] = inputs[i];
         }
 
-        for(int i = 1; i < mlp->layersSize; i++){
-            for(int j = 0; j < mlp->layers[i + 1]; j++){
-                for(int k = 0; k < mlp->layers[i + 2]; k++){
-                    result_layers[i][j] += mlp->model[i - 1][k][j] * result_layers[i - 1][j];
-                    cout << i << j << k << endl;
+
+        for(int l = 1; l < mlp->layersSize - 1; l++){
+            for(int j = 0; j < mlp->layers[l] ; j++){
+                mlp->result[l][j] = l == 1 ? mlp->model[l][0][j] : tanh(mlp->result[l-1][j] * mlp->model[l][0][j]);
+                for(int i = 0; i < mlp->layers[l + 1]; i++){
+                    mlp->result[l][j] = l == 1 ? mlp->result[l-1][j] * mlp->model[l][i + 1][j] : tanh(mlp->result[l-1][j] * mlp->model[l][i + 1][j]);
                 }
             }
         }
-        for(int i = 0; i < mlp->layers[mlp->layersSize - 2]; i++){
-            // cout << i << mlp->layers[mlp->layersSize - 2] << endl;
-            result += tanh(result_layers[mlp->layersSize - 2][i] * mlp->model[mlp->layersSize - 2][i][0]);
-        }
-        return result > 0 ? 1 : -1;
+        return mlp->result[mlp->layersSize - 1][0] > 0 ? 1 : -1;
 
+    }
+
+    DLLEXPORT void train_mlp_class_model(MLP* mlp, double* dataset, double* expeced_outputs, int datasetSize, int step, int epoch) {
+        int size = datasetSize / mlp->layers[0];
+        for (int i = 0; i < epoch; i++) {
+            int exemple_number = rand() % size;
+            int predicted = predict_mlp_class_model(mlp, dataset + exemple_number * mlp->layers[0]);
+            int expected = expeced_outputs[exemple_number];
+
+            mlp->delta[mlp->layersSize-1][0] = (1 - pow(predicted, 2)) * (predicted - expected);
+
+            for(int l = mlp->layersSize - 1; l > 0; l--){
+                for(int k = mlp->layers[l]; k >= 0; k--){
+                    for(int j = 0; j < mlp->layers[l - 1]; j++){
+                        mlp->delta[l][k] += 1;
+                    }
+                    mlp->delta[l][k] *= (1 - pow(mlp->result[l][k], 2));
+                }
+            }
+        }
     }
 }
 
@@ -150,7 +173,7 @@ int main()
     auto dataset = new double[6] {-10.0, 0.0, 1.0, 0.0, 5.0, 1.0};
     auto expectedOutputs = new double[3] {1.0, 0.0, 1.0};
 
-    cout << "bonjour";
+    /*cout << "bonjour";
     auto m = create_linear_model(2);
     train_linear_class_model(m, dataset, expectedOutputs, 2, 6, 0.0001 , 100000);
 
@@ -161,11 +184,11 @@ int main()
 
     for(int i = 0; i < 3; i++){
         cout << m[i] << endl;
-    }
+    }*/
 
-    /*MLP* mlp = create_mlp_model(new int[5] {2, 3, 2, 2, 1}, 5);
+    MLP* mlp = create_mlp_model(new int[5] {2, 3, 2, 2, 1}, 5);
     cout << mlp->model[1][1][0] << endl;
     cout << predict_mlp_class_model(mlp, new double[2] {2, 3}) << endl;
-    std::cout << "feoizjfozeijfoizej" << endl;*/
+    std::cout << "feoizjfozeijfoizej" << endl;
     return 0;
 }
