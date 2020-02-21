@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using UnityEngine;
+using System.Linq;
 using Random = UnityEngine.Random;
 
 public class RetrieveAndModifySpherePositionsScript : MonoBehaviour
@@ -191,18 +192,16 @@ public class RetrieveAndModifySpherePositionsScript : MonoBehaviour
         {
             double x = Math.Abs(trainingSpheres[i].position.x);
             double z = Math.Abs(trainingSpheres[i].position.z);
-            if(x < 6 && x > 2 && z > 2 && z < 8) {
+            if (trainingSpheres[i].position.y < 0) {
                 trainingInputs[2 * i] = x;
                 trainingInputs[2 * i + 1] = z;
-            } else {
-                trainingInputs[2 * i] = trainingSpheres[i].position.x;
-                trainingInputs[2 * i + 1] = trainingSpheres[i].position.z;
             }
-            // trainingInputs[2 * i] = 1 / (Math.Pow(trainingSpheres[i].position.x,2) * Math.Pow(trainingSpheres[i].position.z,2));
-            // trainingInputs[2 * i + 1] = 1 / (Math.Pow(trainingSpheres[i].position.z,2) * Math.Pow(trainingSpheres[i].position.x,2));
+            else {
+                trainingInputs[2 * i] = trainingSpheres[i].position.x * 1000;
+                trainingInputs[2 * i + 1] = trainingSpheres[i].position.z * 1000;
+            }
             trainingExpectedOutputs[i] = trainingSpheres[i].position.y;
         }
-        
         train_linear_class_model(model, trainingInputs, trainingExpectedOutputs, 2, trainingInputs.Length, 0.0001, epoch);
         Debug.Log("model is training");
          
@@ -215,27 +214,20 @@ public class RetrieveAndModifySpherePositionsScript : MonoBehaviour
             
             double x = Math.Abs(testSpheres[i].position.x);
             double z = Math.Abs(testSpheres[i].position.z);
-            // var input = new double[] {x, z};
-            if(x < 6 && x > 2 && z > 2 && z < 8) {
-                var input = new double[] {x, z};
-                Debug.Log($"input length: {input.Length}");
-                var predictedY = (float) predict_linear_class_model(model, input, 2);
-                Debug.Log($"predict: {predictedY}");
-                testSpheres[i].position = new Vector3(
-                    (float) x,
-                    predictedY,
-                    (float) z);
-            } else {
-                var input = new double[] {testSpheres[i].position.x, testSpheres[i].position.z};
-                Debug.Log($"input length: {input.Length}");
-                var predictedY = (float) predict_linear_class_model(model, input, 2);
-                Debug.Log($"predict: {predictedY}");
-                testSpheres[i].position = new Vector3(
-                    testSpheres[i].position.x,
-                    predictedY,
-                    testSpheres[i].position.z);
+            bool inCross = false;
+            foreach(var t in trainingSpheres.Where(sphere => sphere.position.y < 0)){
+                if(t.position.x.Equals(testSpheres[i].position.x) && t.position.z.Equals(testSpheres[i].position.z)){
+                    inCross = true;
+                }
             }
-            
+            var input = new double[] {inCross ? x : x * 1000, inCross ? z : z * 1000};
+            Debug.Log($"input length: {input.Length}");
+            var predictedY = (float) predict_linear_class_model(model, input, 2);
+            Debug.Log($"predict: {predictedY}");
+            testSpheres[i].position = new Vector3(
+                testSpheres[i].position.x,
+                predictedY,
+                testSpheres[i].position.z);
         }
     }
 
