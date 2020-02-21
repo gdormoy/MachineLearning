@@ -54,65 +54,17 @@ extern "C"{
     DLLEXPORT void train_linear_class_model(double* model, double* dataset, double* expected_output, const int numberOfParams, const int datasetSize, double step, int epoch){
 
     int size = datasetSize / numberOfParams;
-    for(int i = 0; i < epoch; i++) {
-        int k = rand() % size;
+    for(int i = 0; i < epoch; i++){
+        int exemple_number = rand() % size;
 
-        auto inputK = dataset + k * numberOfParams;
-
-        auto predictedK = predict_linear_class_model(model, inputK, numberOfParams);
-
-        auto semiGrad = step * (expected_output[k] - predictedK);
-
-        model[0] += semiGrad;
-
-        for (auto j = 0; j < numberOfParams; j++)
-        {
-            model[j + 1] += semiGrad * inputK[j];
+        auto exemple_input = dataset + exemple_number * numberOfParams;
+        auto predicted = predict_linear_class_model(model, exemple_input, numberOfParams);
+        auto machin =  step * (expected_output[exemple_number] - predicted);
+        model[0] += machin;
+        for(int j = 0; j < numberOfParams; j++){
+            model[j+1] += machin * exemple_input[j];
         }
-
     }
-
-    return;
-
-        MatrixXd X(size, numberOfParams + 1);
-        for(int i = 0; i < size; i++){
-            X(i, 0) = 1;
-            for(int j = 1; j < numberOfParams + 1; j++){
-                X(i,j) = dataset[i * numberOfParams + j - 1];
-                cout << "X : " << X(i,j - 1) ;
-            }
-            cout << "X : " << X(i, numberOfParams) << endl;
-        }
-
-        MatrixXd Y(size, 1);
-        for(int i = 0; i < size; i++){
-            Y(i, 0) = expected_output[i];
-        }
-
-        MatrixXd w(numberOfParams + 1, 1);
-        for(int i = 0; i < numberOfParams + 1; i++){
-            w(i, 0) = model[i];
-        }
-
-        for(int i = 0; i < epoch; i++){
-            int exemple_number = rand() % size;
-            cout << "exemple number : " << exemple_number << endl;
-            MatrixXd exemple(numberOfParams + 1, 1);
-            auto exemple_array = new double[numberOfParams];
-
-            for(int j = 0; j < numberOfParams; j++){
-                exemple_array[j] = X(exemple_number, j + 1);
-            }
-            for(int j = 0; j < numberOfParams + 1; j++){
-                exemple(j, 0) = X(exemple_number, j);
-            }
-            w = w + (step * (Y(exemple_number, 0) - predict_linear_class_model(model, exemple_array, 2)) * exemple);
-        }
-
-        for(int i = 0; i < numberOfParams + 1; i++){
-            model[i] = w(i, 0);
-            cout << w(i, 0) << endl;
-        }
     }
 
     DLLEXPORT void train_linear_model(double* model, double* dataset, double* expected_output, const int numberOfParams,  const int datasetSize) {
@@ -199,7 +151,7 @@ int main()
     auto expectedOutputs = new double[3] {1.0, 0.0, 1.0};
 
     cout << "bonjour";
-    /*auto m = create_linear_model(2);
+    auto m = create_linear_model(2);
     train_linear_class_model(m, dataset, expectedOutputs, 2, 6, 0.0001 , 100000);
 
     cout << "bonjour";
@@ -209,11 +161,11 @@ int main()
 
     for(int i = 0; i < 3; i++){
         cout << m[i] << endl;
-    }*/
+    }
 
-    MLP* mlp = create_mlp_model(new int[5] {2, 3, 2, 2, 1}, 5);
+    /*MLP* mlp = create_mlp_model(new int[5] {2, 3, 2, 2, 1}, 5);
     cout << mlp->model[1][1][0] << endl;
     cout << predict_mlp_class_model(mlp, new double[2] {2, 3}) << endl;
-    std::cout << "feoizjfozeijfoizej" << endl;
+    std::cout << "feoizjfozeijfoizej" << endl;*/
     return 0;
 }

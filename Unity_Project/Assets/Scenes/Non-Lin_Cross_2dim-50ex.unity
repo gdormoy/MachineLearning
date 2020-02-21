@@ -11745,7 +11745,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1158790806}
-        m_MethodName: PredictOnTestSpheresCross
+        m_MethodName: PredictOnTestSpheresCrossIF
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -18680,9 +18680,11 @@ RectTransform:
   m_Father: {fileID: 2110967055}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.1, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0.1}
-  m_AnchoredPosition: {x: 0, y: 361.3}
+
+  m_AnchorMin: {x: 0.4, y: 0}
+  m_AnchorMax: {x: 0.6, y: 0.1}
+  m_AnchoredPosition: {x: -36.300003, y: 361.3}
+
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1824208682
@@ -18729,7 +18731,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1158790806}
-        m_MethodName: TrainCross
+        m_MethodName: TrainCrossIF
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
